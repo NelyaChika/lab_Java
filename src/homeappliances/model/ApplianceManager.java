@@ -3,9 +3,9 @@ package homeappliances.model;
 import java.util.ArrayList;
 import java.util.List;
 
-// На Етапі 3 цей клас буде містити реальні об'єкти Appliance
+
 public class ApplianceManager {
-    // Припустимо, що тут буде список приладів (повна реалізація - Етап 3)
+    // Припустимо, що тут буде список приладів
     private final List<Object> appliances = new ArrayList<>();
 
     public ApplianceManager() {
