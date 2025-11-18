@@ -1,7 +1,7 @@
 package homeappliances.model;
 
 public abstract class EntertainmentAppliance extends Appliance {
-    private String type; // наприклад "Smart TV", "Колонки"
+    private String type;
 
     public EntertainmentAppliance(String name, double power, String type) {
         super(name, power);

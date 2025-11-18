@@ -6,7 +6,6 @@ import java.util.*;
 
 public class FileManager {
 
-    /** Зберігає список у файл у простому текстовому форматі (одна сутність на рядок) */
     public void save(List<Appliance> appliances, String filename) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
             for (Appliance a : appliances) {
@@ -16,7 +15,6 @@ public class FileManager {
         }
     }
 
-    /** Завантажує список з файлу */
     public List<Appliance> load(String filename) throws IOException {
         List<Appliance> list = new ArrayList<>();
         File f = new File(filename);
@@ -34,14 +32,12 @@ public class FileManager {
     }
 
     private Appliance parseLine(String line) {
-        // Формат: TYPE;... (залежно від TYPE)
         String[] parts = line.split(";", -1);
         String type = parts[0].toUpperCase(Locale.ROOT);
 
         try {
             switch (type) {
                 case "REFRIGERATOR": {
-                    // REFRIGERATOR;name;power;plugged;hasTimer;temperature
                     String name = parts[1];
                     double power = Double.parseDouble(parts[2]);
                     boolean plugged = Boolean.parseBoolean(parts[3]);

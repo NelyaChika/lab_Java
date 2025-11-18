@@ -15,7 +15,6 @@ public class TV extends EntertainmentAppliance {
 
     @Override
     public String toDataString() {
-        // TV;name;power;plugged;type;screenSize;screenType
         return String.format("TV;%s;%.2f;%b;%s;%.2f;%s",
                 getName(), getPower(), isPluggedIn(), getType(), screenSize, screenType);
     }

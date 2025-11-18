@@ -12,7 +12,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         List<Appliance> appliances = new ArrayList<>();
-        // початкові прилади
         appliances.add(new Refrigerator("Samsung Fridge", 200, true, -4.0));
         appliances.add(new WashingMachine("Bosch Washer", 1500, true, 12));
         appliances.add(new TV("LG OLED", 120, "Smart TV", 55.0, "OLED"));
@@ -47,7 +46,6 @@ public class Main {
             if (cmd != null) {
                 cmd.execute();
                 if (choice == 8) {
-                    // після Load показуємо список
                     new ShowAllCommand(appliances).execute();
                 }
             } else {

@@ -34,7 +34,6 @@ public class Thermostat extends Appliance {
 
     @Override
     public String toDataString() {
-        // THERMOSTAT;name;power;plugged;currentTemp;targetTemp
         return String.format("THERMOSTAT;%s;%.2f;%b;%.2f;%.2f",
                 getName(), getPower(), isPluggedIn(), currentTemperature, targetTemperature);
     }

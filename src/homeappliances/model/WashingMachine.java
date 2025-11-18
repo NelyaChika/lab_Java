@@ -13,7 +13,6 @@ public class WashingMachine extends KitchenAppliance {
 
     @Override
     public String toDataString() {
-        // WASHINGMACHINE;name;power;plugged;hasTimer;programsCount
         return String.format("WASHINGMACHINE;%s;%.2f;%b;%b;%d",
                 getName(), getPower(), isPluggedIn(), hasTimer(), programsCount);
     }
