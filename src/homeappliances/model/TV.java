@@ -1,5 +1,7 @@
 package homeappliances.model;
 
+import java.util.Locale;
+
 public class TV extends EntertainmentAppliance {
     private double screenSize;
     private String screenType;
@@ -15,7 +17,7 @@ public class TV extends EntertainmentAppliance {
 
     @Override
     public String toDataString() {
-        return String.format("TV;%s;%.2f;%b;%s;%.2f;%s",
+        return String.format(Locale.ENGLISH,"TV;%s;%.2f;%b;%s;%.2f;%s",
                 getName(), getPower(), isPluggedIn(), getType(), screenSize, screenType);
     }
 

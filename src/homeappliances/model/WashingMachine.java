@@ -1,5 +1,7 @@
 package homeappliances.model;
 
+import java.util.Locale;
+
 public class WashingMachine extends KitchenAppliance {
     private int programsCount;
 
@@ -13,7 +15,7 @@ public class WashingMachine extends KitchenAppliance {
 
     @Override
     public String toDataString() {
-        return String.format("WASHINGMACHINE;%s;%.2f;%b;%b;%d",
+        return String.format(Locale.ENGLISH,"WASHINGMACHINE;%s;%.2f;%b;%b;%d",
                 getName(), getPower(), isPluggedIn(), hasTimer(), programsCount);
     }
 

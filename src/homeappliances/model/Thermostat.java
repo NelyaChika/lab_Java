@@ -1,5 +1,7 @@
 package homeappliances.model;
 
+import java.util.Locale;
+
 public class Thermostat extends Appliance {
     private double currentTemperature;
     private double targetTemperature;
@@ -34,7 +36,7 @@ public class Thermostat extends Appliance {
 
     @Override
     public String toDataString() {
-        return String.format("THERMOSTAT;%s;%.2f;%b;%.2f;%.2f",
+        return String.format(Locale.ENGLISH,"THERMOSTAT;%s;%.2f;%b;%.2f;%.2f",
                 getName(), getPower(), isPluggedIn(), currentTemperature, targetTemperature);
     }
 

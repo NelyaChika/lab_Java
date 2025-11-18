@@ -1,4 +1,4 @@
 REFRIGERATOR;Samsung Fridge;200.00;false;true;-4.00
-WASHINGMACHINE;Bosch Washer;1500.00;false;true;12
-TV;LG OLED;120.00;false;Smart TV;55.00;OLED
+WASHINGMACHINE;Bosch Washer;1500,00;false;true;12
+TV;LG OLED;120,00;false;Smart TV;55,00;OLED
 THERMOSTAT;Xiaomi Thermostat;50.00;false;19.50;22.00

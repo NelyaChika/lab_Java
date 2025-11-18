@@ -1,5 +1,7 @@
 package homeappliances.model;
 
+import java.util.Locale;
+
 public class Refrigerator extends KitchenAppliance {
     private double temperature; // °C
 
@@ -14,7 +16,7 @@ public class Refrigerator extends KitchenAppliance {
     @Override
     public String toDataString() {
         // REFRIGERATOR;name;power;plugged;hasTimer;temperature
-        return String.format("REFRIGERATOR;%s;%.2f;%b;%b;%.2f",
+        return String.format(Locale.ENGLISH, "REFRIGERATOR;%s;%.2f;%b;%b;%.2f",
                 getName(), getPower(), isPluggedIn(), hasTimer(), temperature);
     }
 
