@@ -1,5 +1,7 @@
 package homeappliances.model;
 
+import java.util.Locale;
+
 public abstract class Appliance {
     private String name;
     private double power;
@@ -22,6 +24,6 @@ public abstract class Appliance {
 
     @Override
     public String toString() {
-        return String.format("%s (%.1f Вт) %s", name, power, (pluggedIn ? "[Увімкнено]" : "[Вимкнено]"));
+        return String.format(Locale.ENGLISH, "%s (%.1f Вт) %s", name, power, (pluggedIn ? "[Увімкнено]" : "[Вимкнено]"));
     }
 }
