@@ -5,13 +5,24 @@ import homeappliances.service.ApplianceService;
 import homeappliances.util.FileManager;
 import homeappliances.command.*;
 
+// Імпорти для логування
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    // Створюємо логгер для класу Main
+    private static final Logger logger = LogManager.getLogger(Main.class);
 
+    public static void main(String[] args) {
+        // INFO: Програма почала роботу (запишеться у файл)
+        logger.info("Додаток 'HomeAppliances' запущено.");
+
+        Scanner scanner = new Scanner(System.in);
         List<Appliance> appliances = new ArrayList<>();
+
+        // Початкове наповнення списку
         appliances.add(new Refrigerator("Samsung Fridge", 200, true, -4.0));
         appliances.add(new WashingMachine("Bosch Washer", 1500, true, 12));
         appliances.add(new TV("LG OLED", 120, "Smart TV", 55.0, "OLED"));
@@ -36,22 +47,43 @@ public class Main {
             printMenu();
             System.out.print("Вибір: ");
             String line = scanner.nextLine();
+
             try {
                 choice = Integer.parseInt(line);
+
+                // Логуємо вибір користувача
+                logger.debug("Користувач обрав пункт меню: {}", choice);
+
             } catch (NumberFormatException e) {
+                // WARN: Користувач ввів текст замість цифри (у файл)
+                logger.warn("Помилка введення меню: користувач ввів '{}'", line);
                 System.out.println("Введіть число.");
                 continue;
             }
+
             Command cmd = menu.get(choice);
             if (cmd != null) {
-                cmd.execute();
-                if (choice == 8) {
-                    new ShowAllCommand(appliances).execute();
+                try {
+                    cmd.execute();
+                    if (choice == 8) {
+                        new ShowAllCommand(appliances).execute();
+                    }
+                } catch (Exception e) {
+                    // FATAL/ERROR: Якщо команда впала, надсилаємо e-mail
+                    logger.fatal("КРИТИЧНА ПОМИЛКА під час виконання команди {}: {}",
+                            cmd.getClass().getSimpleName(), e.getMessage(), e);
                 }
             } else {
+                logger.warn("Невірний вибір пункту меню: {}", choice);
                 System.out.println("Невірний вибір.");
             }
+
         } while (choice != 0);
+
+        logger.info("Додаток завершує роботу за запитом користувача.");
+
+        // Пауза для відправки e-mail перед закриттям, якщо була помилка
+        try { Thread.sleep(2000); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
 
         scanner.close();
     }

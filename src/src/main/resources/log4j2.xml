@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <File name="FileAppender" fileName="logs/app.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <SMTP name="MailAppender"
+              subject="Критична помилка в системі HomeAppliances"
+              to="admin@example.com"
+              from="system@example.com"
+              smtpHost="smtp.gmail.com"
+              smtpPort="587"
+              smtpProtocol="smtp"
+              smtpUsername="your-email@gmail.com"
+              smtpPassword="your-app-password"
+              bufferSize="1">
+            <ThresholdFilter level="FATAL" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{HH:mm:ss} %-5p %c{1} - %m%n"/>
+        </SMTP>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="MailAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>
